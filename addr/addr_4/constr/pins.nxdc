@@ -1,0 +1,8 @@
+top = addr_4
+
+a (SW4,SW3,SW2,SW1)
+b (SW8,SW7,SW6,SW5)
+cin (SW0)
+sum (LD4,LD3,LD2,LD1)
+cout (LD0)
+
