@@ -14,7 +14,7 @@ module sub_4(a,b,res,cout,overflow);
 	assign b_sub = {~b[3],b[2:0]};
 	assign b_sub_1 = b_sub[3]?({b_sub[3],~b_sub[2:0]}+1'b1):b_sub;
 	
-	addr_4 addr_i0(.a(a_1),.b(b_sub_1),.res(res),.cout(cout),.overflow(overflow));
+	addr_4 addr_i0(.a(a_1),.b(b_sub_1),.sum(res),.cout(cout),.overflow(overflow));
 
 endmodule
 

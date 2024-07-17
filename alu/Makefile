@@ -14,7 +14,7 @@ VERILATOR_ARGUMENTS += --trace
 VERILATOR_TOP += --top-module $(TOPNAME) 
 
 VERILATOR_INPUT += vsrc/*.v
-VERILATOR_INPUT += csrc/*_ver.cpp
+VERILATOR_INPUT += csrc/*.cpp
 
 BUILD_DIR = ./build
 OBJ_DIR = $(BUILD_DIR)/obj_dir
@@ -29,7 +29,7 @@ $(SRC_AUTO_BIND): $(NXDC_FILE)
 	python3 $(NVBOARD_HOME)/scripts/auto_pin_bind.py $^ $@
 
 VSRCS = $(shell find $(abspath ./vsrc) -name "*.v")
-CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*_nvb.cpp")
+CSRCS = $(shell find $(abspath ./csrc) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 CSRCS += $(SRC_AUTO_BIND)
 
 include $(NVBOARD_HOME)/scripts/nvboard.mk
