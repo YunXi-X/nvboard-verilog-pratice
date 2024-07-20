@@ -28,7 +28,7 @@ VL_INLINE_OPT void Vlfsr_top___024root___nba_sequent__TOP__0(Vlfsr_top___024root
         vlSelf->lfsr_top__DOT__lfsr_i0__DOT__counter 
             = (0xffU & ((IData)(1U) + (IData)(vlSelf->lfsr_top__DOT__lfsr_i0__DOT__counter)));
         __Vdly__out = ((0x7fU & (IData)(__Vdly__out)) 
-                       | (0x80U & (VL_REDXOR_4((0xfU 
+                       | (0x80U & (VL_REDXOR_8((0x1dU 
                                                 & (IData)(vlSelf->out))) 
                                    << 7U)));
         __Vdly__out = ((0x80U & (IData)(__Vdly__out)) 

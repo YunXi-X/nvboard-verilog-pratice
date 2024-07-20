@@ -12,7 +12,7 @@ reg [7:0]counter;
         end
             else begin
             if (counter < 8'b11111111) begin
-                out[7]<=out[3]^out[2]^out[1]^out[0];
+                out[7]<=out[4]^out[3]^out[2]^out[0];
 //                reg_d u0(.i(out[7]),.clk(clk),.out(out[6]));
 //                reg_d u1(.i(out[6]),.clk(clk),.out(out[5]));
 //                reg_d u2(.i(out[5]),.clk(clk),.out(out[4]));
