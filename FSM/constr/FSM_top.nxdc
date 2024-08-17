@@ -1,0 +1,6 @@
+top = FSM_top
+
+clk BTNC
+in  (SW15)
+reset (SW14)
+out (LD3,LD2,LD1,LD0)

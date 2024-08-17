@@ -1,0 +1,44 @@
+#include <verilated.h>
+#include "verilated_vcd_c.h"
+#include "VPS_top.h"
+
+VerilatedContext* contextp = NULL;
+VerilatedVcdC* tfp = NULL;
+
+static VPS_top* top;
+
+void step_and_dump_wave() {
+    top->eval();
+    contextp->timeInc(1);
+    tfp->dump(contextp->time());
+}
+
+void sim_init() {
+    contextp = new VerilatedContext;
+    tfp = new VerilatedVcdC;
+    top = new VPS_top;
+    contextp->traceEverOn(true);
+    top->trace(tfp,10);
+    tfp->open("alu_top.vcd");
+}
+
+void sim_exit() {
+    step_and_dump_wave();
+    tfp->close();
+}
+
+int main(){
+    sim_init();
+        for(int i=0;i<5;i++){
+            top -> reset = 0;
+            top -> clk = ~clk;
+            sleep(1);
+            step_and_dump_wave();
+        }
+        top -> reset =1;
+        for (int j=0;j<10;j++){
+            step_and_dump_wave();
+            top->in=rand()%1;
+        }
+    sim_exit();
+}
