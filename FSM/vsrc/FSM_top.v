@@ -24,7 +24,11 @@ module FSM_top(
     end
 	
     always@(posedge clk or posedge reset) begin
-		statue = next_statue;	
+		if (reset)
+			statue = S0;
+		else 
+			statue = next_statue;	
+
         case(statue)
             S0 : out<=1'b0;
             S1 : out<=1'b0;

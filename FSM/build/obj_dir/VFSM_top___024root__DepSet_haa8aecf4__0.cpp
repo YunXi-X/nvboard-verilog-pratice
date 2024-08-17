@@ -45,7 +45,8 @@ VL_INLINE_OPT void VFSM_top___024root___nba_sequent__TOP__0(VFSM_top___024root* 
     CData/*4:0*/ __Vtableidx1;
     __Vtableidx1 = 0;
     // Body
-    vlSelf->FSM_top__DOT__statue = vlSelf->FSM_top__DOT__next_statue;
+    vlSelf->FSM_top__DOT__statue = ((IData)(vlSelf->reset)
+                                     ? 0U : (IData)(vlSelf->FSM_top__DOT__next_statue));
     vlSelf->out = (1U & ((8U & (IData)(vlSelf->FSM_top__DOT__statue))
                           ? (IData)((0U == (7U & (IData)(vlSelf->FSM_top__DOT__statue))))
                           : (IData)((4U == (7U & (IData)(vlSelf->FSM_top__DOT__statue))))));
