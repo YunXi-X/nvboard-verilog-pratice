@@ -3,13 +3,13 @@ $timescale 1s $end
 
  $scope module TOP $end
   $var wire  1 $ en $end
+  $var wire  3 % out [2:0] $end
   $var wire  8 # x [7:0] $end
-  $var wire  3 % y [2:0] $end
   $scope module coder $end
    $var wire  1 $ en $end
    $var wire 32 & i [31:0] $end
+   $var wire  3 % out [2:0] $end
    $var wire  8 # x [7:0] $end
-   $var wire  3 % y [2:0] $end
   $upscope $end
  $upscope $end
 $enddefinitions $end

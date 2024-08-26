@@ -4,7 +4,7 @@
 # Execute this makefile from the object directory:
 #    make -f Vcoder.mk
 
-default: Vcoder
+default: /home/mike/project/nvboard-verilog-pratice/coder/coder83/build/coder
 
 ### Constants...
 # Perl executable (from $PERL)
@@ -35,17 +35,31 @@ VM_PREFIX = Vcoder
 VM_MODPREFIX = Vcoder
 # User CFLAGS (from -CFLAGS on Verilator command line)
 VM_USER_CFLAGS = \
+	-I \
+	/home/mike/project/ysyx-workbench/nvboard/usr/include \
+	-DTOP_NAME="Vcoder" \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
+	/home/mike/project/ysyx-workbench/nvboard/build/nvboard.a \
+	-L/usr/local/lib \
+	-Wl,-rpath,/usr/local/lib \
+	-Wl,--enable-new-dtags \
+	-lSDL2 \
+	-lSDL2_image \
+	-lSDL2_ttf \
+	-lSDL2 \
+	-lSDL2_image \
 
 # User .cpp files (from .cpp's on Verilator command line)
 VM_USER_CLASSES = \
-	emu_coder \
+	auto_bind \
+	coder_nv \
 
 # User .cpp directories (from .cpp's on Verilator command line)
 VM_USER_DIR = \
-	. \
+	/home/mike/project/nvboard-verilog-pratice/coder/coder83/build \
+	/home/mike/project/nvboard-verilog-pratice/coder/coder83/csrc \
 
 
 ### Default rules...
@@ -57,11 +71,13 @@ include $(VERILATOR_ROOT)/include/verilated.mk
 ### Executable rules... (from --exe)
 VPATH += $(VM_USER_DIR)
 
-emu_coder.o: emu_coder.cpp
+auto_bind.o: /home/mike/project/nvboard-verilog-pratice/coder/coder83/build/auto_bind.cpp
+	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
+coder_nv.o: /home/mike/project/nvboard-verilog-pratice/coder/coder83/csrc/coder_nv.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
 
 ### Link rules... (from --exe)
-Vcoder: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a $(VM_HIER_LIBS)
+/home/mike/project/nvboard-verilog-pratice/coder/coder83/build/coder: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a $(VM_HIER_LIBS)
 	$(LINK) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) $(LIBS) $(SC_LIBS) -o $@
 
 

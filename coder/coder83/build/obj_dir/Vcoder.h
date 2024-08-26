@@ -12,7 +12,6 @@
 
 class Vcoder__Syms;
 class Vcoder___024root;
-class VerilatedVcdC;
 
 // This class is the main interface to the Verilated model
 class Vcoder VL_NOT_FINAL : public VerilatedModel {
@@ -27,7 +26,8 @@ class Vcoder VL_NOT_FINAL : public VerilatedModel {
     // propagate new values into/out from the Verilated model.
     VL_IN8(&en,0,0);
     VL_IN8(&x,7,0);
-    VL_OUT8(&y,2,0);
+    VL_OUT8(&out,2,0);
+    VL_OUT8(&seg,7,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.
@@ -64,8 +64,6 @@ class Vcoder VL_NOT_FINAL : public VerilatedModel {
     bool eventsPending();
     /// Returns time at next time slot. Aborts if !eventsPending()
     uint64_t nextTimeSlot();
-    /// Trace signals in the model; called by application code
-    void trace(VerilatedVcdC* tfp, int levels, int options = 0);
     /// Retrieve name of this model instance (as passed to constructor).
     const char* name() const;
 
@@ -73,7 +71,6 @@ class Vcoder VL_NOT_FINAL : public VerilatedModel {
     const char* hierName() const override final;
     const char* modelName() const override final;
     unsigned threads() const override final;
-    std::unique_ptr<VerilatedTraceConfig> traceConfig() const override final;
 } VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);
 
 #endif  // guard

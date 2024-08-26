@@ -15,16 +15,15 @@ class Vcoder___024root final : public VerilatedModule {
     // DESIGN SPECIFIC STATE
     VL_IN8(en,0,0);
     VL_IN8(x,7,0);
-    VL_OUT8(y,2,0);
+    VL_OUT8(out,2,0);
+    VL_OUT8(seg,7,0);
+    CData/*0:0*/ __Vtrigrprev__TOP__en;
+    CData/*7:0*/ __Vtrigrprev__TOP__x;
+    CData/*0:0*/ __VactDidInit;
     CData/*0:0*/ __VactContinue;
-    IData/*31:0*/ coder__DOT__i;
-    IData/*31:0*/ __VstlIterCount;
-    IData/*31:0*/ __VicoIterCount;
     IData/*31:0*/ __VactIterCount;
-    VlTriggerVec<1> __VstlTriggered;
-    VlTriggerVec<1> __VicoTriggered;
-    VlTriggerVec<0> __VactTriggered;
-    VlTriggerVec<0> __VnbaTriggered;
+    VlTriggerVec<1> __VactTriggered;
+    VlTriggerVec<1> __VnbaTriggered;
 
     // INTERNAL VARIABLES
     Vcoder__Syms* const vlSymsp;
